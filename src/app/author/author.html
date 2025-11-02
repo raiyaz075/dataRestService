@@ -1,0 +1,26 @@
+<h2>Find Author by ID</h2>
+<form (ngSubmit)="onSubmit()">
+  <label for="aid">Author ID:</label>
+  <input id="aid" name="aid" [(ngModel)]="authorId" required pattern="^[0-9]+$" />
+  <button type="submit">Search</button>
+</form>
+
+
+@if (loading) {
+    <p>Loading…</p>
+  }
+  
+  @if (error) {
+    <p class="error">{{ error }}</p>
+  }
+  
+  @if (author) {
+    <div>
+      <h3>Author</h3>
+      <table>
+        <tr><th>ID</th><td>{{ author.id }}</td></tr>
+        <tr><th>First Name</th><td>{{ author.firstName }}</td></tr>
+        <tr><th>Last Name</th><td>{{ author.lastName }}</td></tr>
+      </table>
+    </div>
+  }

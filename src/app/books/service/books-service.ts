@@ -30,6 +30,9 @@ export class BooksService {
       map(response => response._embedded ? response._embedded.authors : undefined )
     );
   }
+  public getAuthorById(id: number): Observable<AuthorEntity> { //NEW SERVICE METHOD
+    return this.http.get<AuthorEntity>(Url + 'authors/' + id);
+  }
 
   public updateBookAuthors(bookId: number, authorId: number): Observable<any> {
     return this.http.patch(Url + 'books/' + bookId + '/authors/' + authorId, {});
